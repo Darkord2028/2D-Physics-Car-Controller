@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Bleach\\Unity Projects\\2D Side Scroller\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|e:\\bleach\\unity projects\\2d side scroller\\assets\\scripts\\proceduralgeneration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\proceduralgeneration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|e:\\bleach\\unity projects\\2d side scroller\\assets\\scripts\\item\\fuelitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\item\\fuelitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D Side Scroller\\assets\\scripts\\player\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D Side Scroller\\assets\\scripts\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProceduralGeneration.cs",
+              "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D Side Scroller\\Assets\\Scripts\\ProceduralGeneration.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ProceduralGeneration.cs",
+              "ToolTip": "E:\\Bleach\\Unity Projects\\2D Side Scroller\\Assets\\Scripts\\ProceduralGeneration.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ProceduralGeneration.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAQwE4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T11:15:39.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FuelItem.cs",
+              "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D Side Scroller\\Assets\\Scripts\\Item\\FuelItem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Item\\FuelItem.cs",
+              "ToolTip": "E:\\Bleach\\Unity Projects\\2D Side Scroller\\Assets\\Scripts\\Item\\FuelItem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Item\\FuelItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-07T10:41:08.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CarController.cs",
+              "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D Side Scroller\\Assets\\Scripts\\Player\\CarController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\CarController.cs",
+              "ToolTip": "E:\\Bleach\\Unity Projects\\2D Side Scroller\\Assets\\Scripts\\Player\\CarController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\CarController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T07:37:50.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InputManager.cs",
+              "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D Side Scroller\\Assets\\Scripts\\InputManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\InputManager.cs",
+              "ToolTip": "E:\\Bleach\\Unity Projects\\2D Side Scroller\\Assets\\Scripts\\InputManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\InputManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T07:33:28.075Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
