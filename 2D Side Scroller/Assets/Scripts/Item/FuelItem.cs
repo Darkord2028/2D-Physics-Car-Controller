@@ -3,7 +3,7 @@ using UnityEngine;
 public class FuelItem : MonoBehaviour
 {
     [Header("Item Data")]
-    [SerializeField] float fuelGain;
+    [SerializeField] int fuelGain;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

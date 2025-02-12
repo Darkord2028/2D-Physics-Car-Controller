@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Fuel Cheat",
+                    "type": "Button",
+                    "id": "8278889e-be1f-4826-9b6f-39f9fe96a829",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ReturnToCheckPoint",
+                    "type": "Button",
+                    "id": "0b4b12af-5aa2-4ba3-b7fc-fcc270348f9a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -86,6 +104,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "96eb0553-09e9-41c3-8ae4-f4b0232cbe17",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Fuel Cheat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "98df808e-451d-4275-b527-5daf04244da6",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReturnToCheckPoint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

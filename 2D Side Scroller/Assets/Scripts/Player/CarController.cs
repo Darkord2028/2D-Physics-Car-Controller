@@ -14,16 +14,16 @@ public class CarController : MonoBehaviour
 
     #endregion
 
-    #region Inspector Runtime Variable
+    #region Inspector Runtime and Private Variable
 
     [Header("Runtime Variable")]
     [SerializeField] bool grounded;
     public bool canApplyImpulse;
-    [SerializeField] float currentFuel;
+    [SerializeField] int currentFuel;
 
-    // Temp Variables
-    [SerializeField] Vector2 playerVelocity;
-    [SerializeField] float playerSpeed;
+    private float distanceTraveled;
+    private float fuelTimer = 0;
+    private bool isDead = false;
 
     #endregion
 
@@ -47,12 +47,12 @@ public class CarController : MonoBehaviour
     [SerializeField] Vector2 inAirImpulse;
 
     [Header("Car Fuel Data")]
-    [SerializeField] float initialFuel;
-    [SerializeField] float maxFuel;
-    [SerializeField] [Range(0, 1)] float fuelConsumptionRate;
+    [SerializeField] int maxFuel;
+    [SerializeField] [Range(0, 10)] float fuelConsumptionRate;
 
     [Header("Ground References")]
-    [SerializeField] Transform groundCheck;
+    [SerializeField] Transform frontWheelGroundCheck;
+    [SerializeField] Transform rearWheelGroundCheck;
     [SerializeField] [Range(0, 1)] float groundCheckDistance;
     [SerializeField] LayerMask whatIsGround;
 
@@ -85,31 +85,21 @@ public class CarController : MonoBehaviour
     {
         SetPlayerFuel();
 
-        if(currentFuel <= 0)
+        if(currentFuel <= 0 || CheckIfDead())
         {
-            inputManager.SetPlayerInput(false);
-            retryUI.gameObject.SetActive(true);
+            SetPlayerDeath();
         }
-        else if (isDead())
-        {
-            inputManager.SetPlayerInput(false);
-            retryUI.gameObject.SetActive(true);
-        }
-
     }
 
     private void FixedUpdate()
     {
-        playerVelocity = carRigidBody.linearVelocity;
-        playerSpeed = Mathf.Abs(carRigidBody.linearVelocityX);
+        grounded = CheckIfGrounded();
 
-        grounded = isGrounded();
-
-        if (isGrounded())
+        if (CheckIfGrounded() && !isDead)
         {
             SetVehicleMovement();
         }
-        else if (!isGrounded())
+        else if (!CheckIfGrounded() && !isDead)
         {
             if(canApplyImpulse && inputManager.moveAmout == 1)
             {
@@ -167,19 +157,48 @@ public class CarController : MonoBehaviour
 
     private void SetInitialFuel()
     {
-        fuelSlider.maxValue = maxFuel;
-        fuelSlider.value = initialFuel;
-        currentFuel = initialFuel;
+        ReactToUnity.instance._maxEnergy = maxFuel;
+        ReactToUnity.instance._Energy = ReactToUnity.instance._maxEnergy;
+        currentFuel = maxFuel;
+
+        WorldUIManager.instance.SetInitialFuel(maxFuel);
     }
 
     private void SetPlayerFuel()
     {
-        float speed = Mathf.Abs(carRigidBody.linearVelocityX);
-        float currentTime = Time.fixedDeltaTime;
+        float deltaDistance = Mathf.Abs(carRigidBody.linearVelocityX) * Time.deltaTime;
+        distanceTraveled += deltaDistance;
 
-        float Distance = speed * currentTime;
-        currentFuel -= Distance * fuelConsumptionRate;
+        fuelTimer += deltaDistance * fuelConsumptionRate;
 
+        if (fuelTimer >= 1f)
+        {
+            int fuelToConsume = Mathf.FloorToInt(fuelTimer);
+            currentFuel = Mathf.Max(currentFuel - fuelToConsume, 0);
+            fuelTimer -= fuelToConsume;
+
+            ReactToUnity.instance.UseEnergy_Unity(fuelToConsume);
+            WorldUIManager.instance.UpdateFuelSlider(currentFuel);
+        }
+    }
+
+    private void SetPlayerDeath()
+    {
+        retryUI.SetActive(true);
+        isDead = true;
+    }
+
+    public void RetunToLastCheckPoint()
+    {
+        WorldCheckPointManager.instance.TranslateToLastCheckpoint(gameObject);
+    }
+
+    public void CheatPlayerFuel()
+    {
+        currentFuel = maxFuel;
+
+        //Slider
+        fuelSlider.maxValue = maxFuel;
         fuelSlider.value = currentFuel;
     }
 
@@ -192,7 +211,7 @@ public class CarController : MonoBehaviour
 
     #region Item Functions
 
-    public void GainFuel(float amount)
+    public void GainFuel(int amount)
     {
         if(currentFuel > 0)
         {
@@ -212,21 +231,42 @@ public class CarController : MonoBehaviour
 
     #region Check Functions
 
-    private bool isGrounded()
+    private bool CheckIfGrounded()
     {
-        return Physics2D.Raycast(groundCheck.position, -groundCheck.transform.up, groundCheckDistance, whatIsGround);
+        if (Physics2D.Raycast(rearWheelGroundCheck.position, -rearWheelGroundCheck.transform.up, groundCheckDistance, whatIsGround))
+        {
+            return true;
+        }
+        else if (Physics2D.Raycast(frontWheelGroundCheck.position, -frontWheelGroundCheck.transform.up, groundCheckDistance, whatIsGround))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    private bool isDead()
+    private bool CheckIfDead()
     {
         return Physics2D.OverlapCircle(headCheck.position, headCheckRadius, whatIsGround);
     }
 
     #endregion
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("LevelSpawner"))
+        {
+            WorldLevelManager.Instance.CreateWorld();
+            collision.gameObject.SetActive(false);
+        }
+    }
+
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(groundCheck.position, -groundCheck.transform.up * groundCheckDistance);
+        Gizmos.DrawRay(frontWheelGroundCheck.position, -frontWheelGroundCheck.transform.up * groundCheckDistance);
+        Gizmos.DrawRay(rearWheelGroundCheck.position, -rearWheelGroundCheck.transform.up * groundCheckDistance);
         Gizmos.DrawWireSphere(headCheck.position, headCheckRadius);
     }
 

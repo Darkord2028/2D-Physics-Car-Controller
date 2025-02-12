@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - LevelSpawner
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,24 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Clouds
+    uniqueID: 1071557129
+    locked: 0
+  - name: Background
+    uniqueID: 797562191
+    locked: 0
+  - name: Midground
+    uniqueID: 3336488351
+    locked: 0
+  - name: Decorations
+    uniqueID: 538130763
+    locked: 0
+  - name: Player
+    uniqueID: 2150873129
+    locked: 0
+  - name: Foreground
+    uniqueID: 3458900743
     locked: 0
   m_RenderingLayers:
   - Default
