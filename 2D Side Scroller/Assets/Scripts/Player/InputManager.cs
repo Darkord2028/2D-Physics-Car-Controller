@@ -86,6 +86,7 @@ public class InputManager : MonoBehaviour
             if(WorldCheckPointManager.instance.currentCheckPoint != null)
             {
                 carController.RetunToLastCheckPoint();
+                carController.TogglePlayerDeath(false);
             }
         }
     }

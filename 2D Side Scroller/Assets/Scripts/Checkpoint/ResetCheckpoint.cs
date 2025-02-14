@@ -6,7 +6,7 @@ public class ResetCheckpoint : MonoBehaviour
 
     private void Start()
     {
-        rootCollider = transform.root.GetComponent<Collider2D>();
+        rootCollider = GetComponentInParent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -29,9 +29,9 @@ public class WorldCheckPointManager : MonoBehaviour
 
     public void TranslateToLastCheckpoint(GameObject currentCar)
     {
-        currentCar.gameObject.SetActive(false);
         currentCar.transform.position = GetCheckPoint().position;
         currentCar.transform.rotation = Quaternion.identity;
+        currentCar.gameObject.SetActive(false);
         currentCar.gameObject.SetActive(true);
     }
 

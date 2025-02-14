@@ -19,11 +19,18 @@ public class CarController : MonoBehaviour
     [Header("Runtime Variable")]
     [SerializeField] bool grounded;
     public bool canApplyImpulse;
+    [SerializeField] bool flipped;
     [SerializeField] int currentFuel;
 
-    private float distanceTraveled;
-    private float fuelTimer = 0;
     private bool isDead = false;
+
+    private float fuelTimer = 0;
+
+    private float forwardForce;
+    private float distanceTraveled;
+
+    private float totalRotation;
+    private float lastRotationZ;
 
     #endregion
 
@@ -37,23 +44,27 @@ public class CarController : MonoBehaviour
 
     #endregion
 
-    #region Inspector References
+    #region Car Data
 
     [Header("Car Data")]
     [SerializeField] float accelerationForce;
-    [SerializeField] float deaccelerationForce;
+    [SerializeField] float inAirAccelerationForce;
     [SerializeField] float maxSpeed;
-    [SerializeField] Vector2 groundedImpulse;
-    [SerializeField] Vector2 inAirImpulse;
+    [SerializeField] float inAirTorque;
 
     [Header("Car Fuel Data")]
     [SerializeField] int maxFuel;
     [SerializeField] [Range(0, 10)] float fuelConsumptionRate;
 
+    [Header("Car Stunt Data")]
+    [SerializeField] float _360FlipDifference;
+    [SerializeField] float flipRayDistance;
+    [SerializeField] LayerMask flipLayerMask;
+
     [Header("Ground References")]
     [SerializeField] Transform frontWheelGroundCheck;
     [SerializeField] Transform rearWheelGroundCheck;
-    [SerializeField] [Range(0, 1)] float groundCheckDistance;
+    [SerializeField] [Range(0, 1)] float groundCheckRadius;
     [SerializeField] LayerMask whatIsGround;
 
     [Header("Injury References")]
@@ -83,34 +94,38 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
+        grounded = CheckIfGrounded();
         SetPlayerFuel();
 
-        if(currentFuel <= 0 || CheckIfDead())
+        if (currentFuel <= 0)
         {
-            SetPlayerDeath();
+            TogglePlayerDeath(true);
+        }
+        if (CheckIfDead())
+        {
+            if (WorldCheckPointManager.instance.currentCheckPoint != null)
+            {
+                RetunToLastCheckPoint();
+            }
+        }
+        if (grounded)
+        {
+            forwardForce = accelerationForce;
+            totalRotation = 0;
+        }
+        else if(!grounded)
+        {
+            forwardForce = inAirAccelerationForce;
+            CheckIfCarDidFlip();
         }
     }
 
     private void FixedUpdate()
     {
-        grounded = CheckIfGrounded();
-
-        if (CheckIfGrounded() && !isDead)
+        if (!isDead)
         {
             SetVehicleMovement();
         }
-        else if (!CheckIfGrounded() && !isDead)
-        {
-            if(canApplyImpulse && inputManager.moveAmout == 1)
-            {
-                ApplyInAirImpulse(true);
-            }
-            else if (canApplyImpulse && inputManager.moveAmout == -1)
-            {
-                ApplyInAirImpulse(false);
-            }
-        }
-
     }
 
     #endregion
@@ -119,40 +134,17 @@ public class CarController : MonoBehaviour
 
     private void SetVehicleMovement()
     {
-        if(Mathf.Abs(carRigidBody.linearVelocityX) < maxSpeed && inputManager.moveAmout == -1)
+        ApplyInAirImpulse();
+        if (Mathf.Abs(carRigidBody.linearVelocityX) < maxSpeed)
         {
-            carRigidBody.AddForceX(deaccelerationForce * inputManager.moveAmout * Time.fixedDeltaTime, ForceMode2D.Force);
-            if(canApplyImpulse) ApplyImpulse(true);
-        }
-        else if (Mathf.Abs(carRigidBody.linearVelocityX) < maxSpeed && inputManager.moveAmout == 1)
-        {
-            carRigidBody.AddForceX(accelerationForce * inputManager.moveAmout * Time.fixedDeltaTime, ForceMode2D.Force);
-            if(canApplyImpulse) ApplyImpulse(false);
+            carRigidBody.AddForceX(forwardForce * inputManager.moveAmout * Time.fixedDeltaTime, ForceMode2D.Force);
         }
     }
 
-    public void ApplyImpulse(bool isFront = false)
+    private void ApplyInAirImpulse()
     {
-        if (isFront)
-        {
-            carRigidBody.AddForceAtPosition(groundedImpulse, frontImpulse.up, ForceMode2D.Impulse);
-        }
-        else
-        {
-            carRigidBody.AddForceAtPosition(groundedImpulse, rearImpulse.up, ForceMode2D.Impulse);
-        }
-    }
-
-    private void ApplyInAirImpulse(bool isFront = false)
-    {
-        if (isFront)
-        {
-            carRigidBody.AddForceAtPosition(inAirImpulse, frontImpulse.up, ForceMode2D.Impulse);
-        }
-        else
-        {
-            carRigidBody.AddForceAtPosition(inAirImpulse, rearImpulse.up, ForceMode2D.Impulse);
-        }
+        if (grounded) return;
+        carRigidBody.AddTorque(inAirTorque * inputManager.moveAmout, ForceMode2D.Impulse);
     }
 
     private void SetInitialFuel()
@@ -182,10 +174,15 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void SetPlayerDeath()
+    public void TogglePlayerDeath(bool died)
     {
-        retryUI.SetActive(true);
-        isDead = true;
+        retryUI.SetActive(died);
+        isDead = died;
+
+        if(!isDead)
+        {
+            SetInitialFuel();
+        }
     }
 
     public void RetunToLastCheckPoint()
@@ -233,11 +230,11 @@ public class CarController : MonoBehaviour
 
     private bool CheckIfGrounded()
     {
-        if (Physics2D.Raycast(rearWheelGroundCheck.position, -rearWheelGroundCheck.transform.up, groundCheckDistance, whatIsGround))
+        if (Physics2D.OverlapCircle(rearWheelGroundCheck.position, groundCheckRadius, whatIsGround))
         {
             return true;
         }
-        else if (Physics2D.Raycast(frontWheelGroundCheck.position, -frontWheelGroundCheck.transform.up, groundCheckDistance, whatIsGround))
+        else if (Physics2D.OverlapCircle(frontWheelGroundCheck.position, groundCheckRadius, whatIsGround))
         {
             return true;
         }
@@ -247,9 +244,69 @@ public class CarController : MonoBehaviour
         }
     }
 
+    private bool CheckIfFrontWheelGrounded()
+    {
+        return Physics2D.OverlapCircle(frontWheelGroundCheck.position, groundCheckRadius, whatIsGround);
+    }
+
+    private bool CheckIfRearWheelGrounded()
+    {
+        return Physics2D.OverlapCircle(rearWheelGroundCheck.position, groundCheckRadius, whatIsGround);
+    }
+
     private bool CheckIfDead()
     {
         return Physics2D.OverlapCircle(headCheck.position, headCheckRadius, whatIsGround);
+    }
+
+    private void CheckIfCarDidFlip()
+    {
+        //float currentRotationZ = transform.eulerAngles.z;
+        //float rotationChange = Mathf.DeltaAngle(lastRotationZ, currentRotationZ);
+
+
+
+        totalRotation += carRigidBody.angularVelocity * Time.deltaTime;
+        //lastRotationZ = currentRotationZ;
+
+        Debug.Log(totalRotation);
+
+        if (Mathf.Abs(totalRotation) > 360f)
+        {
+            WorldUIManager.instance.ShowStuntMessage("FLIP!");
+            totalRotation = 0f; // Reset flip counter
+        }
+    }
+
+    private void CheckIfFlipped()
+    {
+        bool upsideDown = Physics2D.Raycast(transform.position, transform.up, flipRayDistance, flipLayerMask);
+
+        if(upsideDown)
+        {
+            if (grounded)
+            {
+                flipped = true;
+                WorldUIManager.instance.ShowStuntMessage("FLIP!");
+            }
+        }
+
+    }
+
+    private bool CheckIFCarDidWheelie()
+    {
+        if(!CheckIfFrontWheelGrounded() && CheckIfRearWheelGrounded())
+        {
+            return true;
+        }
+        else if (!CheckIfRearWheelGrounded() && CheckIfFrontWheelGrounded())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     #endregion
@@ -265,9 +322,10 @@ public class CarController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(frontWheelGroundCheck.position, -frontWheelGroundCheck.transform.up * groundCheckDistance);
-        Gizmos.DrawRay(rearWheelGroundCheck.position, -rearWheelGroundCheck.transform.up * groundCheckDistance);
+        Gizmos.DrawWireSphere(frontWheelGroundCheck.position, groundCheckRadius);
+        Gizmos.DrawWireSphere(rearWheelGroundCheck.position, groundCheckRadius);
         Gizmos.DrawWireSphere(headCheck.position, headCheckRadius);
+        Gizmos.DrawRay(transform.position, transform.up * flipRayDistance);
     }
 
 }
