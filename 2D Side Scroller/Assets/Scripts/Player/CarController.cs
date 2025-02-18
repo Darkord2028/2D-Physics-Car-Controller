@@ -19,7 +19,6 @@ public class CarController : MonoBehaviour
     [Header("Runtime Variable")]
     [SerializeField] bool grounded;
     public bool canApplyImpulse;
-    [SerializeField] bool flipped;
     [SerializeField] int currentFuel;
 
     private bool isDead = false;
@@ -30,7 +29,6 @@ public class CarController : MonoBehaviour
     private float distanceTraveled;
 
     private float totalRotation;
-    private float lastRotationZ;
 
     #endregion
 
@@ -54,12 +52,12 @@ public class CarController : MonoBehaviour
 
     [Header("Car Fuel Data")]
     [SerializeField] int maxFuel;
-    [SerializeField] [Range(0, 10)] float fuelConsumptionRate;
+    [SerializeField][Range(0, 10)] float fuelConsumptionRate;
+    [SerializeField][Range(0, 100)] int fuelGainPercentageOnFlip;
+    [SerializeField][Range(0, 100)] int fuelLossPercentageOnDeath;
 
     [Header("Car Stunt Data")]
-    [SerializeField] float _360FlipDifference;
-    [SerializeField] float flipRayDistance;
-    [SerializeField] LayerMask flipLayerMask;
+    [SerializeField] float _360FlipAngle;
 
     [Header("Ground References")]
     [SerializeField] Transform frontWheelGroundCheck;
@@ -70,10 +68,6 @@ public class CarController : MonoBehaviour
     [Header("Injury References")]
     [SerializeField] Transform headCheck;
     [SerializeField] [Range(0, 1)] float headCheckRadius;
-
-    [Header("Impulse Transforms")]
-    [SerializeField] Transform frontImpulse;
-    [SerializeField] Transform rearImpulse;
 
     #endregion
 
@@ -103,6 +97,12 @@ public class CarController : MonoBehaviour
         }
         if (CheckIfDead())
         {
+            int fuelLoss;
+            fuelLoss = (fuelLossPercentageOnDeath * maxFuel) / 100;
+            fuelLoss = Mathf.Min(fuelLoss, maxFuel);
+            currentFuel -= fuelLoss;
+            if (currentFuel < 0) currentFuel = 0;
+
             if (WorldCheckPointManager.instance.currentCheckPoint != null)
             {
                 RetunToLastCheckPoint();
@@ -261,51 +261,18 @@ public class CarController : MonoBehaviour
 
     private void CheckIfCarDidFlip()
     {
-        //float currentRotationZ = transform.eulerAngles.z;
-        //float rotationChange = Mathf.DeltaAngle(lastRotationZ, currentRotationZ);
-
-
-
         totalRotation += carRigidBody.angularVelocity * Time.deltaTime;
-        //lastRotationZ = currentRotationZ;
 
-        Debug.Log(totalRotation);
-
-        if (Mathf.Abs(totalRotation) > 360f)
+        if (Mathf.Abs(totalRotation) > _360FlipAngle)
         {
             WorldUIManager.instance.ShowStuntMessage("FLIP!");
-            totalRotation = 0f; // Reset flip counter
-        }
-    }
 
-    private void CheckIfFlipped()
-    {
-        bool upsideDown = Physics2D.Raycast(transform.position, transform.up, flipRayDistance, flipLayerMask);
+            int fuelGain;
+            fuelGain = ((fuelGainPercentageOnFlip * maxFuel)/100);
+            currentFuel += fuelGain;
+            currentFuel = Mathf.Min(currentFuel, maxFuel);
 
-        if(upsideDown)
-        {
-            if (grounded)
-            {
-                flipped = true;
-                WorldUIManager.instance.ShowStuntMessage("FLIP!");
-            }
-        }
-
-    }
-
-    private bool CheckIFCarDidWheelie()
-    {
-        if(!CheckIfFrontWheelGrounded() && CheckIfRearWheelGrounded())
-        {
-            return true;
-        }
-        else if (!CheckIfRearWheelGrounded() && CheckIfFrontWheelGrounded())
-        {
-            return true;
-        }
-        else
-        {
-            return false;
+            totalRotation = 0f;
         }
     }
 
@@ -325,7 +292,6 @@ public class CarController : MonoBehaviour
         Gizmos.DrawWireSphere(frontWheelGroundCheck.position, groundCheckRadius);
         Gizmos.DrawWireSphere(rearWheelGroundCheck.position, groundCheckRadius);
         Gizmos.DrawWireSphere(headCheck.position, headCheckRadius);
-        Gizmos.DrawRay(transform.position, transform.up * flipRayDistance);
     }
 
 }

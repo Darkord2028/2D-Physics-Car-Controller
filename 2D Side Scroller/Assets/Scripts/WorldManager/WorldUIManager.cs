@@ -10,9 +10,15 @@ public class WorldUIManager : MonoBehaviour
 
     #region UI Data
 
+    [Header("Start Menu")]
+    [SerializeField] GameObject startMenuParent;
+
     [Header("Car Fuel")]
     [SerializeField] Slider fuelSlider;
     [SerializeField] Image fuelIcon;
+
+    [Header("Coin")]
+    [SerializeField] TextMeshProUGUI coinText;
 
     [Header("Retry")]
     [SerializeField] GameObject retryGameobject;
@@ -49,6 +55,10 @@ public class WorldUIManager : MonoBehaviour
     private void Start()
     {
         SetInitialUI();
+        UpdateHighScore();
+
+        startMenuParent.SetActive(true);
+        Time.timeScale = 0;
     }
 
     #endregion
@@ -65,6 +75,12 @@ public class WorldUIManager : MonoBehaviour
     #endregion
 
     #region Set Function
+
+    public void StartGame()
+    {
+        startMenuParent.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
 
     private void SetInitialUI()
     {
@@ -101,6 +117,11 @@ public class WorldUIManager : MonoBehaviour
         yield return new WaitForSeconds(textWaitTime);
         text.gameObject.SetActive(false);
         textPool.Release(text);
+    }
+
+    public void UpdateHighScore()
+    {
+        coinText.text = GameManager.instance.highScore.ToString();
     }
 
     #endregion
