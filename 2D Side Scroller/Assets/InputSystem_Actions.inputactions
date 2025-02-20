@@ -76,6 +76,17 @@
                 },
                 {
                     "name": "",
+                    "id": "8f5bdbc1-3cd3-4720-81e1-184874e96823",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Touch",
+                    "action": "Accelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "010dc298-539e-43e1-9581-77d367f6f4f7",
                     "path": "<Keyboard>/a",
                     "interactions": "",

@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: dff871bdb12611c4a98c412da5b620b4
+guid: 19c44910744ed974382b67a0f693af7d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 587829312373286828
-    second: shaded-dark_0
-  - first:
-      213: -8825941532426639223
-    second: shaded-dark_1
+      213: 1399725893816511699
+    second: Fill_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,9 +46,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -75,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -129,67 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shaded-dark_0
+      name: Fill_0
       rect:
         serializedVersion: 2
-        x: 4
+        x: 0
         y: 0
-        width: 592
-        height: 607
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ee6e231f08623f6479df541b6cf49dbc
-      internalID: -188173773
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shaded-dark_1
-      rect:
-        serializedVersion: 2
-        x: 544
-        y: 387
-        width: 47
-        height: 49
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 7, y: 7, z: 6, w: 6}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a15547a74ac995a4d9a517ab4a9fc0a2
-      internalID: -1390989917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shaded-dark_2
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 447
-        width: 80
+        width: 1000
         height: 80
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8ad90b79252598142b6f6b5e58b322ce
-      internalID: -210606939
+      spriteID: 3dc69dbc843dc6310800000000000000
+      internalID: 1399725893816511699
       vertices: []
       indices: 
       edges: []
@@ -198,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ff835c1eee310de499cc829c3f570cb3
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -208,9 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shaded-dark_0: -188173773
-      shaded-dark_1: -1390989917
-      shaded-dark_2: -210606939
+      Fill_0: 1399725893816511699
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
