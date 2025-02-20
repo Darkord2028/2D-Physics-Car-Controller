@@ -6460,13 +6460,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 434236032}
   m_HandleRect: {fileID: 1381939125}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: -60
   m_MaxValue: 10
-  m_WholeNumbers: 1
-  m_Value: 5
+  m_WholeNumbers: 0
+  m_Value: -5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1104586745}
+        m_TargetAssemblyTypeName: WorldUIManager, Assembly-CSharp
+        m_MethodName: SetVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &485042221
 GameObject:
   m_ObjectHideFlags: 0
@@ -13759,8 +13771,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMenuParent: {fileID: 753818679}
+  audioMixer: {fileID: 24100000, guid: f9efc2a2ca1f6594b901dd105af155cc, type: 2}
   fuelSlider: {fileID: 1053069677}
-  fuelIcon: {fileID: 0}
   coinText: {fileID: 499713686}
   retryGameobject: {fileID: 951486660}
   stuntText: {fileID: 5292114196877113408, guid: a055b84429091b54ca76b4f0f217d09d, type: 3}

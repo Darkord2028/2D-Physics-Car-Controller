@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\assets\\scripts\\worldmanager\\worlduimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\worldmanager\\worlduimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|e:\\bleach\\unity projects\\2d-physics-car-controller\\2d side scroller\\assets\\scripts\\deathcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\deathcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,12 +15,8 @@
       "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\WorldManager\\WorldCheckPointManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|e:\\bleach\\unity projects\\2d-physics-car-controller\\2d side scroller\\assets\\scripts\\player\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\assets\\scripts\\player\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\assets\\scripts\\worldmanager\\worlduimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\worldmanager\\worlduimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\assets\\scripts\\player\\inputmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,11 +58,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CarController.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Player\\CarController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\CarController.cs",
@@ -71,8 +71,7 @@
               "ViewState": "AgIAAAgAAAAAAAAAAABRwCgAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-06T07:37:50.753Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -89,7 +88,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "DeathCollider.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\DeathCollider.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DeathCollider.cs",
@@ -150,15 +149,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "WorldUIManager.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldUIManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WorldManager\\WorldUIManager.cs",
               "ToolTip": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldUIManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\WorldManager\\WorldUIManager.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAawGcAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAACYAAAAAAAAAAAAAwF0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T07:13:07.073Z"
+              "WhenOpened": "2025-02-12T07:13:07.073Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -174,7 +174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "WorldCheckPointManager.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldCheckPointManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WorldManager\\WorldCheckPointManager.cs",
@@ -182,8 +182,7 @@
               "RelativeToolTip": "Assets\\Scripts\\WorldManager\\WorldCheckPointManager.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAIwCAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T06:34:51.805Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-12T06:34:51.805Z"
             },
             {
               "$type": "Document",

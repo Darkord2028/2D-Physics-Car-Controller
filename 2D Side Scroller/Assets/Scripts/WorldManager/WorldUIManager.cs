@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Pool;
 using UnityEngine.UI;
 
@@ -12,10 +13,10 @@ public class WorldUIManager : MonoBehaviour
 
     [Header("Start Menu")]
     [SerializeField] GameObject startMenuParent;
+    [SerializeField] AudioMixer audioMixer;
 
     [Header("Car Fuel")]
     [SerializeField] Image fuelSlider;
-    [SerializeField] Image fuelIcon;
 
     [Header("Coin")]
     [SerializeField] TextMeshProUGUI coinText;
@@ -86,6 +87,11 @@ public class WorldUIManager : MonoBehaviour
     {
         retryGameobject.SetActive(false);
         stuntText.text = string.Empty;
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioMixer.SetFloat("MasterVolume", volume);
     }
 
     public void Retry()
