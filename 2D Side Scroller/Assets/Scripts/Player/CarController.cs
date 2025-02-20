@@ -40,16 +40,6 @@ public class CarController : MonoBehaviour
 
     #endregion
 
-    #region UI Variables
-
-    [Header("Fuel UI")]
-    [SerializeField] Slider fuelSlider;
-
-    [Header("Game UI")]
-    [SerializeField] GameObject retryUI;
-
-    #endregion
-
     #region Car Data
 
     [Header("Car Data")]
@@ -68,6 +58,11 @@ public class CarController : MonoBehaviour
     [SerializeField] float _360FlipAngle;
     [SerializeField] float minAirTime;
     [SerializeField] float minWheelieTime;
+
+    [Header("Car Particle Data")]
+    [SerializeField] ParticleSystem frontDirtParticle;
+    [SerializeField] ParticleSystem rearDirtParticle;
+    [SerializeField] float maxSpeedForParticle;
 
     [Header("Ground References")]
     [SerializeField] Transform frontWheelGroundCheck;
@@ -88,8 +83,6 @@ public class CarController : MonoBehaviour
         inputManager = GetComponent<InputManager>();
         carRigidBody = GetComponent<Rigidbody2D>();
         coinAudioSource = GetComponent<AudioSource>();
-
-        retryUI.gameObject.SetActive(false);
     }
 
     private void Start()
@@ -108,6 +101,7 @@ public class CarController : MonoBehaviour
         SetPlayerFuel();
         CheckInAirTime();
         //CheckForWheelie();
+        CheckForDirtParticleEffect();
 
         if (CheckIfDead())
         {
@@ -324,6 +318,28 @@ public class CarController : MonoBehaviour
         }
     }
 
+    private void CheckForDirtParticleEffect()
+    {
+        if (CheckIfFrontWheelGrounded() && carRigidBody.linearVelocityX > maxSpeedForParticle)
+        {
+            frontDirtParticle.gameObject.SetActive(true);
+        }
+        if (CheckIfRearWheelGrounded() && carRigidBody.linearVelocityX > maxSpeedForParticle)
+        {
+            rearDirtParticle.gameObject.SetActive(true);
+        }
+        else if (!CheckIfGrounded() || carRigidBody.linearVelocityX < maxSpeedForParticle)
+        {
+            frontDirtParticle.gameObject.SetActive(false);
+            rearDirtParticle.gameObject.SetActive(false);
+        }
+        else
+        {
+            frontDirtParticle.gameObject.SetActive(false);
+            rearDirtParticle.gameObject.SetActive(false);
+        }
+    }
+
     #endregion
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -337,6 +353,7 @@ public class CarController : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(frontWheelGroundCheck.position, groundCheckRadius);
         Gizmos.DrawWireSphere(rearWheelGroundCheck.position, groundCheckRadius);
         Gizmos.DrawWireSphere(headCheck.position, headCheckRadius);

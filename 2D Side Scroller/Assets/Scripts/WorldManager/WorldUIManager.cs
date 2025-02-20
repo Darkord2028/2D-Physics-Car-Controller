@@ -14,7 +14,7 @@ public class WorldUIManager : MonoBehaviour
     [SerializeField] GameObject startMenuParent;
 
     [Header("Car Fuel")]
-    [SerializeField] Slider fuelSlider;
+    [SerializeField] Image fuelSlider;
     [SerializeField] Image fuelIcon;
 
     [Header("Coin")]
@@ -95,13 +95,13 @@ public class WorldUIManager : MonoBehaviour
 
     public void SetInitialFuel(int maxFuel)
     {
-        fuelSlider.maxValue = maxFuel;
-        fuelSlider.value = maxFuel;
+        //fuelSlider.maxValue = maxFuel;
+        fuelSlider.fillAmount = 1;
     }
 
     public void UpdateFuelSlider(int currentFuel)
     {
-        fuelSlider.value = currentFuel;
+        fuelSlider.fillAmount = currentFuel/1000f;
     }
 
     public void ShowStuntMessage(string message)

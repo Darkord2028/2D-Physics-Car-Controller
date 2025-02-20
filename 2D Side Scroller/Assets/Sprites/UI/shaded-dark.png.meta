@@ -172,6 +172,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: shaded-dark_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 447
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad90b79252598142b6f6b5e58b322ce
+      internalID: -210606939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -188,6 +210,7 @@ TextureImporter:
     nameFileIdTable:
       shaded-dark_0: -188173773
       shaded-dark_1: -1390989917
+      shaded-dark_2: -210606939
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
