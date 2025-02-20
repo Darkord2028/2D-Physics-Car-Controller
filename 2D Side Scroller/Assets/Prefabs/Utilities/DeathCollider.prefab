@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3326674805290490292}
   - component: {fileID: 5672731514254665266}
+  - component: {fileID: 6577709848345223612}
   m_Layer: 7
   m_Name: DeathCollider
   m_TagString: Untagged
@@ -62,7 +63,7 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -75,3 +76,15 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &6577709848345223612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2918565336931731119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d935db910175641a950696b1f4e4d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

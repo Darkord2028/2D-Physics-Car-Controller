@@ -4231,7 +4231,7 @@ SpriteRenderer:
   m_Size: {x: 439, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4673856130407465072
@@ -7284,7 +7284,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2918565336931731119, guid: 6ccb864a6b3d0764a88184509abf257c, type: 3}
       propertyPath: m_Name
-      value: DeadCollider
+      value: DeathCollider
       objectReference: {fileID: 0}
     - target: {fileID: 3326674805290490292, guid: 6ccb864a6b3d0764a88184509abf257c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7292,7 +7292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3326674805290490292, guid: 6ccb864a6b3d0764a88184509abf257c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -70
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 3326674805290490292, guid: 6ccb864a6b3d0764a88184509abf257c, type: 3}
       propertyPath: m_LocalPosition.z
