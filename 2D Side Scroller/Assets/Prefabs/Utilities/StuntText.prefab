@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8699843685054807108}
   - component: {fileID: 5292114196877113408}
   m_Layer: 5
-  m_Name: Flip
+  m_Name: StuntText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_fontSize: 61.29
   m_fontSizeBase: 61.29
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1

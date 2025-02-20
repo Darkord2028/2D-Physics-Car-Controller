@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class InputManager : MonoBehaviour
 {
     private CarController carController;
-    private PlayerInput playerInput;
+    public PlayerInput playerInput { get; private set; }
 
     #region Input Flags
 
@@ -27,7 +27,7 @@ public class InputManager : MonoBehaviour
         if (FuelCheatInput)
         {
             UseFuelCheatInput();
-            carController.CheatPlayerFuel();
+            ReactToUnity.instance.GiveEnergy_Unity(500);
         }
     }
 

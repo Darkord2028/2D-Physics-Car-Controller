@@ -2714,7 +2714,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: f9efc2a2ca1f6594b901dd105af155cc, type: 2}
-  m_audioClip: {fileID: 8300000, guid: f90d2412cefca404cba80202baddb8d1, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: f90d2412cefca404cba80202baddb8d1, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -4848,6 +4848,7 @@ GameObject:
   - component: {fileID: 1402974997}
   - component: {fileID: 1402975002}
   - component: {fileID: 1402975001}
+  - component: {fileID: 1402975004}
   m_Layer: 0
   m_Name: Ninja Car
   m_TagString: Player
@@ -4929,7 +4930,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounded: 0
   canApplyImpulse: 0
-  currentFuel: 0
   fuelSlider: {fileID: 799611811}
   retryUI: {fileID: 951486660}
   accelerationForce: 350
@@ -4937,10 +4937,11 @@ MonoBehaviour:
   maxSpeed: 20
   inAirTorque: -0.05
   maxFuel: 1000
-  fuelConsumptionRate: 3.5
-  fuelGainPercentageOnFlip: 15
-  fuelLossPercentageOnDeath: 25
+  fuelConsumptionRate: 1.65
+  fuelGainPercentageOnFlip: 8
+  fuelLossPercentageOnDeath: 20
   _360FlipAngle: 220
+  minAirTime: 0.8
   frontWheelGroundCheck: {fileID: 2022924368}
   rearWheelGroundCheck: {fileID: 1277895823}
   groundCheckRadius: 0.32
@@ -5218,6 +5219,103 @@ PolygonCollider2D:
       - {x: 1.682251, y: -0.014467716}
       - {x: 1.7327108, y: 0.34584898}
   m_UseDelaunayMesh: 0
+--- !u!82 &1402975004
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402974994}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f9efc2a2ca1f6594b901dd105af155cc, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1408126763
 GameObject:
   m_ObjectHideFlags: 0
@@ -5441,8 +5539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52996b44f400bc74ba2bba1907742d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Energy: 100
-  _maxEnergy: 100
+  _Energy: 1000
+  _maxEnergy: 1000
   _timer: 0
   _config:
     initialPower: 0

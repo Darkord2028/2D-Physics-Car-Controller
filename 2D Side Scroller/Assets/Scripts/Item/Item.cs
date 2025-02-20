@@ -8,17 +8,16 @@ public class Item : MonoBehaviour
     [SerializeField] int coinMultiplier;
     [SerializeField] float moveDistance;
     [SerializeField] float duration;
+    [SerializeField] AudioClip collectCoinAudioClip;
 
     [Header("Fuel")]
     [SerializeField] int fuelMultiplier;
 
     private SpriteRenderer itemSprite;
-    private AudioSource audioSource;
 
     private void Start()
     {
         itemSprite = GetComponentInChildren<SpriteRenderer>();
-        audioSource = GetComponentInChildren<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,7 +53,7 @@ public class Item : MonoBehaviour
     {
         GameManager.instance.highScore += coinMultiplier;
         WorldUIManager.instance.UpdateHighScore();
-        audioSource.Play();
+        player.PlayCoinCollectionSound(collectCoinAudioClip);
         MoveUpwardsAndDisable();
     }
 

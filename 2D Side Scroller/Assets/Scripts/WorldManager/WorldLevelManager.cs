@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WorldLevelManager : MonoBehaviour
 {
-    public static WorldLevelManager Instance;
+    public static WorldLevelManager instance;
 
     [Header("Prefabs")]
     [SerializeField] GameObject[] platformPrefabs;
@@ -15,13 +15,13 @@ public class WorldLevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if(instance == null)
         {
-            Instance = this;
+            instance = this;
         }
         else
         {
-            Destroy(Instance);
+            Destroy(instance);
         }
     }
 

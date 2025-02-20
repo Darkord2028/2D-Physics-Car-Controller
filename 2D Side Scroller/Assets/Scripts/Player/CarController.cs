@@ -12,6 +12,11 @@ public class CarController : MonoBehaviour
     private InputManager inputManager;
     private Rigidbody2D carRigidBody;
 
+    private ReactToUnity reactToUnity;
+    private WorldUIManager UIManager;
+    private WorldLevelManager levelManager;
+    private WorldCheckPointManager checkPointManager;
+
     #endregion
 
     #region Inspector Runtime and Private Variable
@@ -19,16 +24,19 @@ public class CarController : MonoBehaviour
     [Header("Runtime Variable")]
     [SerializeField] bool grounded;
     public bool canApplyImpulse;
-    [SerializeField] int currentFuel;
+    //[SerializeField] int currentFuel;
 
     private bool isDead = false;
 
     private float fuelTimer = 0;
-
     private float forwardForce;
     private float distanceTraveled;
-
     private float totalRotation;
+    private float inAirTime = 0;
+    private float frontWheelieTime = 0;
+    private float rearWheelieTime = 0;
+
+    private AudioSource coinAudioSource;
 
     #endregion
 
@@ -58,6 +66,8 @@ public class CarController : MonoBehaviour
 
     [Header("Car Stunt Data")]
     [SerializeField] float _360FlipAngle;
+    [SerializeField] float minAirTime;
+    [SerializeField] float minWheelieTime;
 
     [Header("Ground References")]
     [SerializeField] Transform frontWheelGroundCheck;
@@ -77,12 +87,18 @@ public class CarController : MonoBehaviour
     {
         inputManager = GetComponent<InputManager>();
         carRigidBody = GetComponent<Rigidbody2D>();
+        coinAudioSource = GetComponent<AudioSource>();
 
         retryUI.gameObject.SetActive(false);
     }
 
     private void Start()
     {
+        reactToUnity = ReactToUnity.instance;
+        UIManager = WorldUIManager.instance;
+        levelManager = WorldLevelManager.instance;
+        checkPointManager = WorldCheckPointManager.instance;
+
         SetInitialFuel();
     }
 
@@ -90,22 +106,21 @@ public class CarController : MonoBehaviour
     {
         grounded = CheckIfGrounded();
         SetPlayerFuel();
+        CheckInAirTime();
+        //CheckForWheelie();
 
-        if (currentFuel <= 0)
-        {
-            TogglePlayerDeath(true);
-        }
         if (CheckIfDead())
         {
             int fuelLoss;
             fuelLoss = (fuelLossPercentageOnDeath * maxFuel) / 100;
             fuelLoss = Mathf.Min(fuelLoss, maxFuel);
-            currentFuel -= fuelLoss;
-            if (currentFuel < 0) currentFuel = 0;
 
-            if (WorldCheckPointManager.instance.currentCheckPoint != null)
+            reactToUnity.UseEnergy_Unity(fuelLoss);
+
+            if (checkPointManager.currentCheckPoint != null)
             {
                 RetunToLastCheckPoint();
+                inAirTime = 0;
             }
         }
         if (grounded)
@@ -149,11 +164,7 @@ public class CarController : MonoBehaviour
 
     private void SetInitialFuel()
     {
-        ReactToUnity.instance._maxEnergy = maxFuel;
-        ReactToUnity.instance._Energy = ReactToUnity.instance._maxEnergy;
-        currentFuel = maxFuel;
-
-        WorldUIManager.instance.SetInitialFuel(maxFuel);
+        UIManager.SetInitialFuel(reactToUnity._maxEnergy);
     }
 
     private void SetPlayerFuel()
@@ -166,37 +177,31 @@ public class CarController : MonoBehaviour
         if (fuelTimer >= 1f)
         {
             int fuelToConsume = Mathf.FloorToInt(fuelTimer);
-            currentFuel = Mathf.Max(currentFuel - fuelToConsume, 0);
+            reactToUnity._Energy = Mathf.Max(reactToUnity._Energy - fuelToConsume, 0);
             fuelTimer -= fuelToConsume;
 
-            ReactToUnity.instance.UseEnergy_Unity(fuelToConsume);
-            WorldUIManager.instance.UpdateFuelSlider(currentFuel);
+            reactToUnity.UseEnergy_Unity(fuelToConsume);
+            UIManager.UpdateFuelSlider(reactToUnity._Energy);
+
+            if(reactToUnity._Energy <= 0 && inputManager.playerInput.enabled)
+            {
+                inputManager.SetPlayerInput(false);
+            }
+            else if (reactToUnity._Energy > 0 && !inputManager.playerInput.enabled)
+            {
+                inputManager.SetPlayerInput(true);
+            }
         }
     }
 
     public void TogglePlayerDeath(bool died)
     {
-        retryUI.SetActive(died);
-        isDead = died;
-
-        if(!isDead)
-        {
-            SetInitialFuel();
-        }
+        inputManager.SetPlayerInput(died);
     }
 
     public void RetunToLastCheckPoint()
     {
         WorldCheckPointManager.instance.TranslateToLastCheckpoint(gameObject);
-    }
-
-    public void CheatPlayerFuel()
-    {
-        currentFuel = maxFuel;
-
-        //Slider
-        fuelSlider.maxValue = maxFuel;
-        fuelSlider.value = currentFuel;
     }
 
     public void ResetScene(string sceneName)
@@ -210,18 +215,13 @@ public class CarController : MonoBehaviour
 
     public void GainFuel(int amount)
     {
-        if(currentFuel > 0)
-        {
-            currentFuel += amount;
+        reactToUnity.GiveEnergy_Unity(amount);
+    }
 
-            if(currentFuel > maxFuel)
-            {
-                currentFuel = maxFuel;
-            }
-
-            fuelSlider.value = currentFuel;
-
-        }
+    public void PlayCoinCollectionSound(AudioClip audioClip)
+    {
+        coinAudioSource.clip = audioClip;
+        coinAudioSource.Play();
     }
 
     #endregion
@@ -230,11 +230,11 @@ public class CarController : MonoBehaviour
 
     private bool CheckIfGrounded()
     {
-        if (Physics2D.OverlapCircle(rearWheelGroundCheck.position, groundCheckRadius, whatIsGround))
+        if (CheckIfFrontWheelGrounded())
         {
             return true;
         }
-        else if (Physics2D.OverlapCircle(frontWheelGroundCheck.position, groundCheckRadius, whatIsGround))
+        else if (CheckIfRearWheelGrounded())
         {
             return true;
         }
@@ -269,10 +269,58 @@ public class CarController : MonoBehaviour
 
             int fuelGain;
             fuelGain = ((fuelGainPercentageOnFlip * maxFuel)/100);
-            currentFuel += fuelGain;
-            currentFuel = Mathf.Min(currentFuel, maxFuel);
+
+            reactToUnity.GiveEnergy_Unity(fuelGain);
 
             totalRotation = 0f;
+        }
+    }
+
+    private void CheckInAirTime()
+    {
+        if (!CheckIfFrontWheelGrounded() && !CheckIfRearWheelGrounded())
+        {
+            inAirTime += Time.deltaTime;
+        }
+        else if(CheckIfGrounded())
+        {
+            if(inAirTime > minAirTime)
+            {
+                float airTime = Mathf.Round(inAirTime * 100f) / 100f;
+                UIManager.ShowStuntMessage("Air Time! " + airTime);
+            }
+
+            inAirTime = 0f;
+        }
+    }
+
+    private void CheckForWheelie()
+    {
+        if (CheckIfFrontWheelGrounded() && !CheckIfRearWheelGrounded())
+        {
+            frontWheelieTime += Time.deltaTime;
+            rearWheelieTime = 0f;
+        }
+        else if (CheckIfRearWheelGrounded() && !CheckIfFrontWheelGrounded())
+        {
+            rearWheelieTime += Time.deltaTime;
+            frontWheelieTime = 0f;
+        }
+        else if(!CheckIfFrontWheelGrounded() && !CheckIfRearWheelGrounded())
+        {
+            if(frontWheelieTime > minWheelieTime)
+            {
+                float frontWheelie = Mathf.Round(frontWheelieTime * 100) / 100;
+                UIManager.ShowStuntMessage("Rear Wheelie " + frontWheelie);
+            }
+            if(rearWheelieTime > minWheelieTime)
+            {
+                float rearWheelie = Mathf.Round(rearWheelieTime * 100) / 100;
+                UIManager.ShowStuntMessage("Front Wheelie " +  rearWheelie);
+            }
+
+            frontWheelieTime = 0f;
+            rearWheelieTime = 0f;
         }
     }
 
@@ -282,7 +330,7 @@ public class CarController : MonoBehaviour
     {
         if (collision.CompareTag("LevelSpawner"))
         {
-            WorldLevelManager.Instance.CreateWorld();
+            WorldLevelManager.instance.CreateWorld();
             collision.gameObject.SetActive(false);
         }
     }
