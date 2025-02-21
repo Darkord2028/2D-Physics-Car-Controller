@@ -29,17 +29,30 @@ public class WorldLevelManager : MonoBehaviour
     {
         for (int i = 0; i < initialSpawn; i++)
         {
-            CreateWorld();
+            if (i == 0)
+            {
+                CreateWorld(true);
+            }
+            else
+            {
+                CreateWorld();
+            }
         }
     }
 
-    public void CreateWorld()
+    public void CreateWorld(bool isFirstPlatform = false)
     {
         Shuffle(platformPrefabs);
         GameObject chunk = Instantiate(platformPrefabs[0]);
         chunk.transform.position = firstSpawnLocation * spawnMultiplier;
         chunk.transform.rotation = Quaternion.identity;
         spawnMultiplier += 1;
+
+        if(isFirstPlatform)
+        {
+            WorldCheckPointManager.instance.SetCheckPoint(chunk.GetComponentInChildren<Checkpoint>().checkPointTransform);
+        }
+
     }
 
     private void Shuffle<T>(T[] array)

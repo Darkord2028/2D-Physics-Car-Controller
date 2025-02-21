@@ -3,7 +3,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     private Collider2D triggerCollider;
-    [SerializeField] private Transform checkPointTransform;
+    public Transform checkPointTransform;
 
     private void Start()
     {

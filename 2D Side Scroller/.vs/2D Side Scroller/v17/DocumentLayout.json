@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\assets\\scripts\\worldmanager\\worlduimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\worldmanager\\worlduimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|e:\\bleach\\unity projects\\2d-physics-car-controller\\2d side scroller\\assets\\scripts\\player\\carselectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\carselectionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|e:\\bleach\\unity projects\\2d-physics-car-controller\\2d side scroller\\assets\\scripts\\deathcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\deathcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|e:\\bleach\\unity projects\\2d-physics-car-controller\\2d side scroller\\assets\\scripts\\item\\deathtrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\item\\deathtrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldCheckPointManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\WorldManager\\WorldCheckPointManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Checkpoint\\Checkpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Checkpoint\\Checkpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldLevelManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\WorldManager\\WorldLevelManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\assets\\scripts\\worldmanager\\worlduimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\worldmanager\\worlduimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\assets\\scripts\\deathcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\deathcollider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\assets\\scripts\\player\\carcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -31,24 +47,12 @@
       "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Item\\Item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldLevelManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\WorldManager\\WorldLevelManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Checkpoint\\ResetCheckpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Checkpoint\\ResetCheckpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Item\\DeathTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Item\\DeathTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Checkpoint\\Checkpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E7E7DF6-6ADC-BFB3-5CFD-18B53BC1D125}|Assembly-CSharp.csproj|solutionrelative:Assets\\Scripts\\Checkpoint\\Checkpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,11 +62,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "CarController.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Player\\CarController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\CarController.cs",
@@ -75,7 +79,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "InputManager.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Player\\InputManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\InputManager.cs",
@@ -88,7 +92,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "CarSelectionManager.cs",
+              "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Player\\CarSelectionManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\CarSelectionManager.cs",
+              "ToolTip": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Player\\CarSelectionManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\CarSelectionManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T10:46:39.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DeathCollider.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\DeathCollider.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\DeathCollider.cs",
@@ -96,12 +113,11 @@
               "RelativeToolTip": "Assets\\Scripts\\DeathCollider.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T10:52:11.727Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-20T10:52:11.727Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "ReactToUnity.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\ReactToUnity.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ReactToUnity.cs",
@@ -113,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "GameManager.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
@@ -125,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "Item.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Item\\Item.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Item\\Item.cs",
@@ -137,7 +153,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "ResetCheckpoint.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Checkpoint\\ResetCheckpoint.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Checkpoint\\ResetCheckpoint.cs",
@@ -149,20 +165,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "WorldUIManager.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldUIManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WorldManager\\WorldUIManager.cs",
               "ToolTip": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldUIManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\WorldManager\\WorldUIManager.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAwF0AAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAMBUwF0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T07:13:07.073Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-12T07:13:07.073Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "DeathTrigger.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Item\\DeathTrigger.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Item\\DeathTrigger.cs",
@@ -170,7 +185,8 @@
               "RelativeToolTip": "Assets\\Scripts\\Item\\DeathTrigger.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-12T07:23:52.686Z"
+              "WhenOpened": "2025-02-12T07:23:52.686Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -186,25 +202,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 3,
               "Title": "Checkpoint.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Checkpoint\\Checkpoint.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Checkpoint\\Checkpoint.cs",
               "ToolTip": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\Checkpoint\\Checkpoint.cs",
               "RelativeToolTip": "Assets\\Scripts\\Checkpoint\\Checkpoint.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-12T05:36:07.926Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 4,
               "Title": "WorldLevelManager.cs",
               "DocumentMoniker": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldLevelManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\WorldManager\\WorldLevelManager.cs",
               "ToolTip": "E:\\Bleach\\Unity Projects\\2D-Physics-Car-Controller\\2D Side Scroller\\Assets\\Scripts\\WorldManager\\WorldLevelManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\WorldManager\\WorldLevelManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAgwCEAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-11T08:51:19.665Z"
             }
