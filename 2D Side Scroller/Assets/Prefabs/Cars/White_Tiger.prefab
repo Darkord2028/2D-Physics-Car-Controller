@@ -10099,9 +10099,6 @@ PolygonCollider2D:
       - {x: 1.3138123, y: -0.001455307}
       - {x: 1.46949, y: -0.12287903}
       - {x: 1.5255356, y: -0.26524353}
-      - {x: 1.537796, y: -0.42771888}
-      - {x: 1.7449722, y: -0.41410565}
-      - {x: 1.7244263, y: -0.31013227}
       - {x: 1.733284, y: -0.24352789}
       - {x: 1.7013397, y: -0.16212511}
       - {x: 1.7020035, y: -0.050674915}
@@ -10119,15 +10116,14 @@ PolygonCollider2D:
       - {x: -1.7083969, y: -0.037864685}
       - {x: -1.7213287, y: -0.1461432}
       - {x: -1.7346191, y: -0.25182867}
-      - {x: -1.4036245, y: -0.3550541}
-      - {x: -1.3608017, y: -0.1439333}
+      - {x: -1.3711853, y: -0.23393488}
       - {x: -1.2765656, y: -0.032936096}
       - {x: -1.1451492, y: 0.033667564}
       - {x: -0.88684845, y: 0.04473114}
       - {x: -0.6685715, y: -0.12908053}
-      - {x: -0.61305374, y: -0.3701707}
-      - {x: 0.4726044, y: -0.3856864}
-      - {x: 0.75495815, y: -0.35807377}
+      - {x: -0.6199736, y: -0.2801689}
+      - {x: 0.5418335, y: -0.28529978}
+      - {x: 0.76188564, y: -0.28884178}
   m_UseDelaunayMesh: 0
 --- !u!50 &4696200095971372297
 Rigidbody2D:
@@ -10222,8 +10218,8 @@ WheelJoint2D:
   m_Anchor: {x: 1.1513062, y: -0.5926175}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
-    m_DampingRatio: 0.55
-    m_Frequency: 2
+    m_DampingRatio: 0.4
+    m_Frequency: 1
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
@@ -10247,8 +10243,8 @@ WheelJoint2D:
   m_Anchor: {x: -1.0131836, y: -0.59024024}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_Suspension:
-    m_DampingRatio: 0.55
-    m_Frequency: 2
+    m_DampingRatio: 0.4
+    m_Frequency: 1
     m_Angle: 90
   m_UseMotor: 0
   m_Motor:
@@ -10376,7 +10372,7 @@ Transform:
   m_GameObject: {fileID: 2669538758371486334}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.238, y: 0.242, z: 0}
+  m_LocalPosition: {x: -0.083, y: 0.391, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
