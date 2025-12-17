@@ -12,9 +12,7 @@ public class CarController : MonoBehaviour
     private InputManager inputManager;
     private Rigidbody2D carRigidBody;
 
-    private ReactToUnity reactToUnity;
     private WorldUIManager UIManager;
-    private WorldLevelManager levelManager;
     private WorldCheckPointManager checkPointManager;
 
     #endregion
@@ -24,7 +22,7 @@ public class CarController : MonoBehaviour
     [Header("Runtime Variable")]
     [SerializeField] bool grounded;
     public bool canApplyImpulse;
-    //[SerializeField] int currentFuel;
+    [SerializeField] int currentFuel;
 
     private bool isDead = false;
 
@@ -33,8 +31,6 @@ public class CarController : MonoBehaviour
     private float distanceTraveled;
     private float totalRotation;
     private float inAirTime = 0;
-    private float frontWheelieTime = 0;
-    private float rearWheelieTime = 0;
 
     private AudioSource coinAudioSource;
 
@@ -76,6 +72,9 @@ public class CarController : MonoBehaviour
 
     #endregion
 
+    public delegate void OnGameOver();
+    public event OnGameOver onGameOver;
+
     #region Unity Callback Function
 
     private void Awake()
@@ -87,10 +86,10 @@ public class CarController : MonoBehaviour
 
     private void Start()
     {
-        reactToUnity = ReactToUnity.instance;
         UIManager = WorldUIManager.instance;
-        levelManager = WorldLevelManager.instance;
         checkPointManager = WorldCheckPointManager.instance;
+
+        onGameOver += SetPlayerDeath;
 
         SetInitialFuel();
     }
@@ -100,22 +99,11 @@ public class CarController : MonoBehaviour
         grounded = CheckIfGrounded();
         SetPlayerFuel();
         CheckInAirTime();
-        //CheckForWheelie();
         CheckForDirtParticleEffect();
 
         if (CheckIfDead())
         {
-            int fuelLoss;
-            fuelLoss = (fuelLossPercentageOnDeath * maxFuel) / 100;
-            fuelLoss = Mathf.Min(fuelLoss, maxFuel);
-
-            reactToUnity.UseEnergy_Unity(fuelLoss);
-
-            if (checkPointManager.currentCheckPoint != null)
-            {
-                RetunToLastCheckPoint();
-                inAirTime = 0;
-            }
+            onGameOver?.Invoke();
         }
         if (grounded)
         {
@@ -158,7 +146,8 @@ public class CarController : MonoBehaviour
 
     private void SetInitialFuel()
     {
-        UIManager.SetInitialFuel(reactToUnity._maxEnergy);
+        UIManager.SetInitialFuel(maxFuel);
+        currentFuel = maxFuel;
     }
 
     private void SetPlayerFuel()
@@ -171,21 +160,41 @@ public class CarController : MonoBehaviour
         if (fuelTimer >= 1f)
         {
             int fuelToConsume = Mathf.FloorToInt(fuelTimer);
-            reactToUnity._Energy = Mathf.Max(reactToUnity._Energy - fuelToConsume, 0);
+            int _currentFuel = Mathf.Max(currentFuel - fuelToConsume, 0);
+            currentFuel = _currentFuel;
             fuelTimer -= fuelToConsume;
 
-            reactToUnity.UseEnergy_Unity(fuelToConsume);
-            UIManager.UpdateFuelSlider(reactToUnity._Energy);
+            UIManager.UpdateFuelSlider(currentFuel);
 
-            if(reactToUnity._Energy <= 0 && inputManager.playerInput.enabled)
+            if (currentFuel <= 0 && inputManager.playerInput.enabled)
             {
                 inputManager.SetPlayerInput(false);
+                onGameOver?.Invoke();
             }
-            else if (reactToUnity._Energy > 0 && !inputManager.playerInput.enabled)
+            else if (currentFuel > 0 && !inputManager.playerInput.enabled)
             {
                 inputManager.SetPlayerInput(true);
             }
         }
+    }
+
+    private void ReduceFuelOnDeath()
+    {
+        int fuelLoss;
+        fuelLoss = (fuelLossPercentageOnDeath * maxFuel) / 100;
+        fuelLoss = Mathf.Min(fuelLoss, maxFuel);
+
+        if (checkPointManager.currentCheckPoint != null)
+        {
+            RetunToLastCheckPoint();
+            inAirTime = 0;
+        }
+    }
+
+    private void SetPlayerDeath()
+    {
+        isDead = true;
+        WorldUIManager.instance.Retry();
     }
 
     public void TogglePlayerDeath(bool died)
@@ -209,7 +218,7 @@ public class CarController : MonoBehaviour
 
     public void GainFuel(int amount)
     {
-        reactToUnity.GiveEnergy_Unity(amount);
+        currentFuel += amount;
     }
 
     public void PlayCoinCollectionSound(AudioClip audioClip)
@@ -259,12 +268,10 @@ public class CarController : MonoBehaviour
 
         if (Mathf.Abs(totalRotation) > _360FlipAngle)
         {
-            WorldUIManager.instance.ShowStuntMessage("FLIP!");
+            //WorldUIManager.instance.ShowStuntMessage("FLIP!");
 
             int fuelGain;
             fuelGain = ((fuelGainPercentageOnFlip * maxFuel)/100);
-
-            reactToUnity.GiveEnergy_Unity(fuelGain);
 
             totalRotation = 0f;
         }
@@ -281,40 +288,10 @@ public class CarController : MonoBehaviour
             if(inAirTime > minAirTime)
             {
                 float airTime = Mathf.Round(inAirTime * 100f) / 100f;
-                UIManager.ShowStuntMessage("Air Time! " + airTime);
+                //UIManager.ShowStuntMessage("Air Time! " + airTime);
             }
 
             inAirTime = 0f;
-        }
-    }
-
-    private void CheckForWheelie()
-    {
-        if (CheckIfFrontWheelGrounded() && !CheckIfRearWheelGrounded())
-        {
-            frontWheelieTime += Time.deltaTime;
-            rearWheelieTime = 0f;
-        }
-        else if (CheckIfRearWheelGrounded() && !CheckIfFrontWheelGrounded())
-        {
-            rearWheelieTime += Time.deltaTime;
-            frontWheelieTime = 0f;
-        }
-        else if(!CheckIfFrontWheelGrounded() && !CheckIfRearWheelGrounded())
-        {
-            if(frontWheelieTime > minWheelieTime)
-            {
-                float frontWheelie = Mathf.Round(frontWheelieTime * 100) / 100;
-                UIManager.ShowStuntMessage("Rear Wheelie " + frontWheelie);
-            }
-            if(rearWheelieTime > minWheelieTime)
-            {
-                float rearWheelie = Mathf.Round(rearWheelieTime * 100) / 100;
-                UIManager.ShowStuntMessage("Front Wheelie " +  rearWheelie);
-            }
-
-            frontWheelieTime = 0f;
-            rearWheelieTime = 0f;
         }
     }
 

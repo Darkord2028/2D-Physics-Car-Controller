@@ -27,7 +27,7 @@ public class InputManager : MonoBehaviour
         if (FuelCheatInput)
         {
             UseFuelCheatInput();
-            ReactToUnity.instance.GiveEnergy_Unity(500);
+            carController.GainFuel(500);
         }
     }
 

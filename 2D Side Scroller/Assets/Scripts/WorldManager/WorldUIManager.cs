@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Pool;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WorldUIManager : MonoBehaviour
@@ -23,6 +24,7 @@ public class WorldUIManager : MonoBehaviour
 
     [Header("Retry")]
     [SerializeField] GameObject retryGameobject;
+    [SerializeField] GameObject leaderboard_GO;
 
     [Header("Car Stunt UI")]
     [SerializeField] TextMeshProUGUI stuntText;
@@ -97,11 +99,16 @@ public class WorldUIManager : MonoBehaviour
     public void Retry()
     {
         retryGameobject.SetActive(true);
+        leaderboard_GO.SetActive(true);
+    }
+
+    public void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadScene(sceneIndex);
     }
 
     public void SetInitialFuel(int maxFuel)
     {
-        //fuelSlider.maxValue = maxFuel;
         fuelSlider.fillAmount = 1;
     }
 
